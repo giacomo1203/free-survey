@@ -17,7 +17,8 @@ $(document)
             .shape('flip back')
             .end()
         ;
-      },
+      }
+/*,
       validationRules = {
         firstName: {
           identifier  : 'email',
@@ -33,7 +34,7 @@ $(document)
           ]
         }
       }
-    ;
+    ;*/
 
     $('.ui.dropdown')
       .dropdown({
@@ -41,11 +42,11 @@ $(document)
       })
     ;
 
-    $('.ui.form')
+    /*$('.ui.form')
       .form(validationRules, {
         on: 'blur'
       })
-    ;
+    ;*/
 
     $('.masthead .information')
       .transition('scale in', 1000)
