@@ -1,0 +1,200 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10.14
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost:3306
+-- Tiempo de generación: 13-02-2017 a las 19:56:49
+-- Versión del servidor: 5.5.52-cll-lve
+-- Versión de PHP: 5.6.20
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `survey_ipfcom`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuesta`
+--
+
+CREATE TABLE IF NOT EXISTS `respuesta` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `usu_id` bigint(20) NOT NULL,
+  `art_id` bigint(20) NOT NULL,
+  `blo_id` bigint(20) NOT NULL,
+  `pre_id` bigint(20) NOT NULL,
+  `subpre_id` double NOT NULL,
+  `valor` text NOT NULL,
+  `fecha` bigint(20) NOT NULL,
+  `estado` char(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=986 ;
+
+--
+-- Volcado de datos para la tabla `respuesta`
+--
+
+INSERT INTO `respuesta` (`id`, `usu_id`, `art_id`, `blo_id`, `pre_id`, `subpre_id`, `valor`, `fecha`, `estado`) VALUES
+(843, 1, 1, 1, 2, 1, 'aaa|bbb|ccc', 20170213, '1'),
+(844, 1, 1, 1, 3, 1, 'yes', 20170213, '1'),
+(842, 1, 1, 1, 4, 1, 'yes', 20170213, '1'),
+(846, 1, 2, 1, 5, 1, 'yes', 20170213, '1'),
+(845, 1, 2, 1, 6, 1, '1', 20170213, '1'),
+(847, 1, 2, 1, 7, 1, '1||', 20170213, '1'),
+(848, 1, 2, 1, 8, 1, 'yes|yeah!', 20170213, '1'),
+(849, 1, 2, 1, 9, 1, 'yes', 20170213, '1'),
+(852, 1, 2, 1, 12, 1, '1', 20170213, '1'),
+(851, 1, 2, 1, 11, 1, 'yes', 20170213, '1'),
+(853, 1, 2, 1, 13, 1, '1|ggggg|', 20170213, '1'),
+(854, 1, 2, 1, 14, 1, '1|hhhhh|', 20170213, '1'),
+(855, 1, 2, 1, 15, 1, '1|iiiiii|', 20170213, '1'),
+(856, 1, 2, 1, 16, 1, '1|', 20170213, '1'),
+(857, 1, 2, 1, 17, 1, '1||', 20170213, '1'),
+(858, 1, 2, 1, 18, 1, '1|', 20170213, '1'),
+(859, 1, 2, 1, 19, 1, 'yes', 20170213, '1'),
+(860, 1, 2, 1, 20, 1, 'yes', 20170213, '1'),
+(861, 1, 2, 1, 21, 1, '1|otherr', 20170213, '1'),
+(237, 3, 1, 1, 1, 1, 'uno|dos|tres', 20170213, '1'),
+(240, 3, 2, 1, 5, 1, 'yes', 20170213, '1'),
+(238, 3, 1, 1, 3, 1, 'no', 20170213, '1'),
+(239, 3, 1, 1, 2, 1, 'uno|dos|tres', 20170213, '1'),
+(242, 3, 1, 1, 4, 1, 'no', 20170213, '1'),
+(241, 3, 2, 1, 6, 1, '2', 20170213, '1'),
+(243, 3, 2, 1, 7, 1, '1||', 20170213, '1'),
+(246, 3, 2, 1, 8, 1, 'no|', 20170213, '1'),
+(247, 3, 2, 1, 11, 1, 'no', 20170213, '1'),
+(248, 3, 2, 1, 12, 1, '2', 20170213, '1'),
+(244, 3, 2, 1, 9, 1, 'no', 20170213, '1'),
+(245, 3, 2, 1, 10, 1, 'uno dos y tres\ncuatro casas\nsino casas', 20170213, '1'),
+(249, 3, 2, 1, 13, 1, '1||', 20170213, '1'),
+(250, 3, 2, 1, 14, 1, '1||', 20170213, '1'),
+(251, 3, 2, 1, 15, 1, '1|Lavajato|', 20170213, '1'),
+(252, 3, 2, 1, 16, 1, '1|', 20170213, '1'),
+(253, 3, 2, 1, 17, 1, '3||', 20170213, '1'),
+(254, 3, 2, 1, 18, 1, '5|', 20170213, '1'),
+(235, 3, 2, 1, 20, 1, 'undefined', 20170213, '1'),
+(236, 3, 2, 1, 21, 1, '2|', 20170213, '1'),
+(105, 4, 1, 1, 1, 1, '||', 20170213, '1'),
+(106, 4, 1, 1, 2, 1, '||', 20170213, '1'),
+(107, 4, 2, 1, 7, 1, '1||', 20170213, '1'),
+(108, 4, 2, 1, 8, 1, 'yes|Every certain amount of years', 20170213, '1'),
+(109, 4, 1, 1, 4, 1, 'undefined', 20170213, '1'),
+(110, 4, 2, 1, 5, 1, 'yes', 20170213, '1'),
+(111, 4, 1, 1, 3, 1, 'no', 20170213, '1'),
+(112, 4, 2, 1, 6, 1, '2', 20170213, '1'),
+(113, 4, 2, 1, 9, 1, 'no', 20170213, '1'),
+(114, 4, 2, 1, 12, 1, '2', 20170213, '1'),
+(115, 4, 2, 1, 13, 1, '3||', 20170213, '1'),
+(116, 4, 2, 1, 14, 1, '3||', 20170213, '1'),
+(117, 4, 2, 1, 11, 1, 'yes', 20170213, '1'),
+(118, 5, 1, 1, 1, 1, 'The Customs Service shall, under rules and regulations prescribed by the Secretary— (a) fix the final appraisement of merchandise by ascertaining or estimating the value thereof, under section 1401a of this title, by all reasonable ways and means in his power, any statement of cost or costs of production in any invoice, affidavit, declaration, other document to the contrary notwithstanding; (b) fix the final classification and rate of duty applicable to such merchandise; (c) fix the final amount of duty to be paid on such merchandise and determine any increased or additional duties, taxes, and fees due or any excess of duties, taxes, and fees deposited; (d) liquidate the entry and reconciliation, if any, of such merchandise; and (e) give or transmit, pursuant to an electronic data interchange system, notice of such liquidation to the importer, his consignee, or agent in such form and manner as the Secretary shall by regulation prescribe.||', 20170213, '1'),
+(119, 5, 1, 1, 2, 1, 'The Customs Service shall, under rules and regulations prescribed by the Secretary— (a) fix the final appraisement of merchandise by ascertaining or estimating the value thereof, under section 1401a of this title, by all reasonable ways and means in his power, any statement of cost or costs of production in any invoice, affidavit, declaration, other document to the contrary notwithstanding; (b) fix the final classification and rate of duty applicable to such merchandise; (c) fix the final amount of duty to be paid on such merchandise and determine any increased or additional duties, taxes, and fees due or any excess of duties, taxes, and fees deposited; (d) liquidate the entry and reconciliation, if any, of such merchandise; and (e) give or transmit, pursuant to an electronic data interchange system, notice of such liquidation to the importer, his consignee, or agent in such form and manner as the Secretary shall by regulation prescribe.||', 20170213, '1'),
+(120, 5, 1, 1, 3, 1, 'no', 20170213, '1'),
+(121, 5, 1, 1, 4, 1, 'no', 20170213, '1'),
+(122, 5, 2, 1, 5, 1, 'yes', 20170213, '1'),
+(123, 5, 2, 1, 6, 1, '2', 20170213, '1'),
+(124, 5, 2, 1, 7, 1, '5||TBD', 20170213, '1'),
+(125, 5, 2, 1, 8, 1, 'no|', 20170213, '1'),
+(255, 3, 2, 1, 19, 1, 'undefined', 20170213, '1'),
+(841, 1, 1, 1, 1, 1, 'aaaa|bbbb|cccc', 20170213, '1'),
+(430, 6, 1, 1, 1, 1, '333|Hjjjj|Jjjjj', 20170213, '1'),
+(431, 6, 1, 1, 2, 1, 'Jjjk|Jjjj|Nnjj', 20170213, '1'),
+(432, 6, 2, 1, 5, 1, 'yes', 20170213, '1'),
+(433, 6, 1, 1, 4, 1, 'undefined', 20170213, '1'),
+(434, 6, 2, 1, 8, 1, 'yes|Jjjjkkk', 20170213, '1'),
+(435, 6, 2, 1, 11, 1, 'no', 20170213, '1'),
+(436, 6, 2, 1, 10, 1, 'Jkkkk', 20170213, '1'),
+(437, 6, 2, 1, 9, 1, 'yes', 20170213, '1'),
+(438, 6, 2, 1, 12, 1, '1', 20170213, '1'),
+(439, 6, 2, 1, 13, 1, '1|Njkkk|', 20170213, '1'),
+(440, 6, 2, 1, 14, 1, '1|Jkjkk|', 20170213, '1'),
+(441, 6, 2, 1, 16, 1, '1|', 20170213, '1'),
+(442, 6, 2, 1, 17, 1, '1||', 20170213, '1'),
+(443, 6, 2, 1, 15, 1, '1|Jkkk|', 20170213, '1'),
+(444, 6, 2, 1, 19, 1, 'yes', 20170213, '1'),
+(445, 6, 2, 1, 18, 1, '1|', 20170213, '1'),
+(446, 6, 2, 1, 20, 1, 'yes', 20170213, '1'),
+(447, 6, 2, 1, 21, 1, '4|', 20170213, '1'),
+(469, 7, 1, 1, 1, 1, '||', 20170213, '1'),
+(470, 7, 1, 1, 2, 1, '||', 20170213, '1'),
+(471, 7, 1, 1, 3, 1, 'undefined', 20170213, '1'),
+(472, 7, 1, 1, 4, 1, 'undefined', 20170213, '1'),
+(473, 7, 2, 1, 5, 1, 'undefined', 20170213, '1'),
+(474, 7, 2, 1, 6, 1, 'undefined', 20170213, '1'),
+(475, 7, 2, 1, 7, 1, 'undefined||', 20170213, '1'),
+(476, 7, 2, 1, 8, 1, 'yes|', 20170213, '1'),
+(477, 7, 2, 1, 9, 1, 'yes', 20170213, '1'),
+(478, 7, 2, 1, 10, 1, '', 20170213, '1'),
+(479, 7, 2, 1, 11, 1, 'no', 20170213, '1'),
+(480, 7, 2, 1, 12, 1, 'undefined', 20170213, '1'),
+(481, 7, 2, 1, 13, 1, 'undefined||', 20170213, '1'),
+(482, 7, 2, 1, 14, 1, 'undefined||', 20170213, '1'),
+(483, 7, 2, 1, 15, 1, '1||', 20170213, '1'),
+(484, 7, 2, 1, 16, 1, 'undefined|', 20170213, '1'),
+(485, 7, 2, 1, 17, 1, 'undefined||', 20170213, '1'),
+(486, 7, 2, 1, 18, 1, 'undefined|', 20170213, '1'),
+(487, 7, 2, 1, 19, 1, 'undefined', 20170213, '1'),
+(488, 7, 2, 1, 20, 1, 'undefined', 20170213, '1'),
+(468, 7, 2, 1, 21, 1, 'undefined|', 20170213, '1'),
+(850, 1, 2, 1, 10, 1, 'yeahhhh!!!', 20170213, '1'),
+(965, 2, 1, 1, 1, 1, '123|123|123', 20170213, '1'),
+(966, 2, 1, 1, 2, 1, '321|321|312', 20170213, '1'),
+(967, 2, 1, 1, 3, 1, 'yes', 20170213, '1'),
+(968, 2, 1, 1, 4, 1, '', 20170213, '1'),
+(969, 2, 2, 1, 5, 1, '', 20170213, '1'),
+(970, 2, 2, 1, 6, 1, '', 20170213, '1'),
+(971, 2, 2, 1, 7, 1, '||', 20170213, '1'),
+(972, 2, 2, 1, 8, 1, '|', 20170213, '1'),
+(973, 2, 2, 1, 9, 1, '', 20170213, '1'),
+(974, 2, 2, 1, 10, 1, '', 20170213, '1'),
+(975, 2, 2, 1, 11, 1, '', 20170213, '1'),
+(976, 2, 2, 1, 12, 1, '', 20170213, '1'),
+(977, 2, 2, 1, 13, 1, '||', 20170213, '1'),
+(978, 2, 2, 1, 14, 1, '||', 20170213, '1'),
+(979, 2, 2, 1, 15, 1, '||', 20170213, '1'),
+(980, 2, 2, 1, 16, 1, '|', 20170213, '1'),
+(981, 2, 2, 1, 17, 1, '||', 20170213, '1'),
+(982, 2, 2, 1, 18, 1, '|', 20170213, '1'),
+(983, 2, 2, 1, 19, 1, 'no', 20170213, '1'),
+(984, 2, 2, 1, 20, 1, 'yes', 20170213, '1'),
+(985, 2, 2, 1, 21, 1, '7|', 20170213, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `usu` varchar(50) NOT NULL,
+  `pas` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `organization` varchar(100) NOT NULL,
+  `job` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `telephone` varchar(50) NOT NULL,
+  `typeorg` varchar(50) NOT NULL,
+  `typesiz` varchar(50) NOT NULL,
+  `fecha` bigint(20) NOT NULL,
+  `estado` char(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usu`, `pas`, `fname`, `lname`, `organization`, `job`, `email`, `country`, `telephone`, `typeorg`, `typesiz`, `fecha`, `estado`) VALUES
+(1, 'andresppb', '123', 'Andres', 'Pacheco', 'Globaltech', 'Programador', 'ppacheco@gmail.com', 'Hobart|otro 022', '3561826', 'Importer,Exporter|otro 011', 'more', 20170209, '1'),
+(7, 'bblegen', 'maxmax', '', '', '', '', '', '', '', '', '', 20170213, '1'),
+(2, 'giacomo', '123', 'Giacomo', 'San', 'INDRA', 'Dev', 'giacomo@gmail.com', 'Adelaide|yara 2', '12 43534534', 'Forwarder|Yara', '50', 20170212, '1'),
+(3, 'renzo', 'RENZO', 'Renzo', 'Roncagliolo', 'IPFCOM', 'RESEARCH DIRECTOR', 'rroncagliolo@gmail.com', 'Darwin|North Miami', '13055109147', 'Customs brokerage,Importer,Carrier|Border Patrol', '50', 20170212, '1'),
+(4, 'Joelito', 'alarma13081', 'Joel', 'Zapata', 'Personal - PUCMM', 'Professor', 'jzapataval@gmail.com', 'Perth|Dominican Republic', '8097573465', 'null|Education', 'more', 20170213, '1'),
+(5, 'brblegen1', 'maxmax', 'Bryce', 'Blegen', 'Trusted Trade Alliance', 'CEO', 'blegen@trusted-trade.net', '|Vancouver', '', 'Importer|', '50', 20170213, '1'),
+(6, 'Antje', 'antje', 'Antje', 'Hussong', 'Aa', 'Pilot', 'rroncagliolo@gmail.com', 'Adelaide|North Miami', '13055109147', 'Forwarder,Importer|', 'more', 20170213, '1');
