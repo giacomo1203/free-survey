@@ -998,16 +998,16 @@ $(function(){
     Responses was saved!
   </div>
   <div class="content">
-    <p>Your survey is incomplete, your responses was saved for completion at a later time.</p>
+    <p>Your survey is incomplete, please return within the next 10 days to continue, finalize and submit your survey.</p>
   </div>
   <div class="actions">
     <div class="ui green basic cancel inverted button">
       <i class="checkmark icon"></i>
-      Stay
+      Go back
     </div>
     <div class="ui red inverted button" onclick="goHome();">
       <i class="remove icon"></i>
-      Leave
+      Log-out
     </div>
   </div>
 </div>
@@ -1055,6 +1055,11 @@ $(function(){
 <script type="text/javascript">
 function actualizar(){
 
+	if(!checkUser()){
+		$("html, body").animate({ scrollTop: 0 }, 1000);
+		return false;
+	}
+
 	$(".aForm").addClass('loading');
 
 	var fnam   = $('#fnam').val();
@@ -1080,17 +1085,21 @@ function actualizar(){
 			}
 		}
 	});
+
+	return true;
 }
 function closemsj(){
 	$("#noComplete").css("bottom", "-5rem" );
 }
 function grabar(type){
 
+	if(!actualizar()){ return; }
+
 	if(!checkComplete() && type){
+		$("#noComplete .header").html("Your survey is not complete!");
 		$("#noComplete").css("bottom", "1rem" );
 		return;
 	}
-	
 	
 
 	var art = ""; var blo = ""; var pre = ""; var subpre = ""; var valor  = "";
@@ -1346,12 +1355,67 @@ function grabar(type){
 	}
 	//alert("Survey Complete!");
 	//location.href = "cerrar.php";
+}
 
+function checkUser(){
+	if($("#fnam").val()==""){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+	if($("#lnam").val()==""){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+	if($("#org").val()==""){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+	if($("#typsiz").val()==""){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+	if($("#typorg").val()==null){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+
+ 	var tmp1 = $("#typorg").val();
+ 	var rst1 = tmp1.indexOf('Other');
+ 	if(rst1>-1){
+ 		if($("#otyporg").val()==""){
+			$("#noComplete .header").html("Respondent information incomplete.");
+			$("#noComplete").css("bottom", "1rem" );
+			return false;
+		}
+ 	}
+		
+	if($("#cou").val()==""){
+		$("#noComplete .header").html("Respondent information incomplete.");
+		$("#noComplete").css("bottom", "1rem" );
+		return false;
+	}
+
+	var tmp2 = $("#cou").val();
+ 	var rst2 = tmp2.indexOf('Other');
+ 	if(rst2>-1){
+ 		if($("#ocou").val()==""){
+			$("#noComplete .header").html("Respondent information incomplete.");
+			$("#noComplete").css("bottom", "1rem" );
+			return false;
+		}
+ 	}
+	
+	return true;
 }
 
 function checkComplete(){
-	if($("#q1a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq1').offset().top - 85) }, 1000); return;}
-	if($("#q2a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq2').offset().top - 85) }, 1000); return;}
+	//if($("#q1a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq1').offset().top - 85) }, 1000); return;}
+	//if($("#q2a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq2').offset().top - 85) }, 1000); return;}
 	if($("input[name='q3']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq3').offset().top - 85) }, 1000); return false;}
 	if($("input[name='q5']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq4').offset().top - 85) }, 1000); return false;}
 	if($("input[name='q6']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq5').offset().top - 85) }, 1000); return false;}
