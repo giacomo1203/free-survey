@@ -67,6 +67,24 @@ $(function(){
     $('.ui.dropdown').dropdown({ on: 'hover' });
 	$('.checkbox').checkbox( $(this).data('method') );
 
+	$('#typorg').change(function() {
+        var tmp = $(this).val();
+        var pos = tmp.indexOf('Other');
+        $('#__q18').fadeOut(500);
+        if(pos>-1){
+	        $('#__q18').transition('bounce');
+        }
+    });
+
+    $('#cou').change(function() {
+        var tmp = $(this).val();
+        var pos = tmp.indexOf('Other');
+        $('#__q19').fadeOut(500);
+        if(pos>-1){
+	        $('#__q19').transition('bounce');
+        }
+    });
+
    $('input[type=radio][name=q7]').change(function() {
         $('#__q1, #__q2').fadeOut(500);
         if(this.value==4){
@@ -83,13 +101,15 @@ $(function(){
         }
     });
     $('input[type=radio][name=q13]').change(function() {
+    	var tmp = this.value;
         $('#__q4, #__q5').fadeOut(500);
-        if(this.value==1){
-          $('#__q4').transition('bounce');
-        }
-        if(this.value==2){
-          $('#__q5').transition('bounce');
-        }
+        if(tmp==1){
+          $('#__q4').fadeIn(500);
+        }else{
+        	console.log(tmp);
+          $('#__q5').fadeIn(500);
+    	}
+        
     });
     $('input[type=radio][name=q14]').change(function() {
         $('#__q6, #__q7').fadeOut(500);
@@ -115,33 +135,63 @@ $(function(){
           $('#__q10').transition('bounce');
         }
     });
-    $('input[type=radio][name=q17]').change(function() {
-        $('#__q11, #__q12').fadeOut(500);
+    // $('input[type=radio][name=q17]').change(function() {
+    //     $('#__q11, #__q12').fadeOut(500);
+    //     if(this.value==7){
+    //       $('#__q11').transition('bounce');
+    //     }
+    //     if(this.value==8){
+    //       $('#__q12').transition('bounce');
+    //     }
+    // });
+    $('#q17g').change(function() {
+        $('#__q11').fadeOut(500);
         if(this.value==7){
           $('#__q11').transition('bounce');
         }
+    });
+    $('#q17h').change(function() {
+        $('#__q12').fadeOut(500);
         if(this.value==8){
           $('#__q12').transition('bounce');
         }
     });
-    $('input[type=radio][name=q18]').change(function() {
+
+    // $('input[type=radio][name=q18]').change(function() {
+    //     $('#__q13').fadeOut(500);
+    //     if(this.value==5){
+    //       $('#__q13').transition('bounce');
+    //     }
+    // });
+
+    $('#q18e').change(function() {
         $('#__q13').fadeOut(500);
         if(this.value==5){
           $('#__q13').transition('bounce');
         }
     });
+
     $('input[type=radio][name=q20]').change(function() {
         $('#__q14').fadeOut(500);
         if(this.value=='yes'){
           $('#__q14').transition('bounce');
         }
     });
-    $('input[type=radio][name=q21]').change(function() {
+    // $('input[type=radio][name=q21]').change(function() {
+    //     $('#__q15').fadeOut(500);
+    //     if(this.value==7){
+    //       $('#__q15').transition('bounce');
+    //     }
+    // });
+
+    $('#q21g').change(function() {
         $('#__q15').fadeOut(500);
         if(this.value==7){
           $('#__q15').transition('bounce');
         }
     });
+
+
     $('input[type=radio][name=q3]').change(function() {
         $('#__q16').fadeOut(500);
         if(this.value=='yes'){
@@ -167,16 +217,27 @@ $(function(){
     <?php if($p15[0]=="1"){ echo "$('#__q8').transition('bounce');"; } ?>
     <?php if($p15[0]=="2"){ echo "$('#__q9').transition('bounce');"; } ?>
     <?php if($p16[0]=="5"){ echo "$('#__q10').transition('bounce');"; } ?>
-    <?php if($p17[0]=="7"){ echo "$('#__q11').transition('bounce');"; } ?>
-    <?php if($p17[0]=="8"){ echo "$('#__q12').transition('bounce');"; } ?>
-    <?php if($p18[0]=="5"){ echo "$('#__q13').transition('bounce');"; } ?>
+    <?php if($p17[6]=="1"){ echo "$('#__q11').transition('bounce');"; } ?>
+    <?php if($p17[8]=="1"){ echo "$('#__q12').transition('bounce');"; } ?>
+    <?php if($p18[4]=="1"){ echo "$('#__q13').transition('bounce');"; } ?>
     <?php if($p20=="yes"){ echo "$('#__q14').transition('bounce');"; } ?>
-    <?php if($p21[0]=="7"){ echo "$('#__q15').transition('bounce');"; } ?>
+    <?php if($p21[6]=="1"){ echo "$('#__q15').transition('bounce');"; } ?>
+
+    <?php $r = strpos(",".$a_typorg[0].",", ",Other,"); if($r!==FALSE){ echo "$('#__q18').transition('bounce');"; } ?>
+    <?php if("Other"==$a_cou[0]){ echo "$('#__q19').transition('bounce');"; } ?>
 
 });
 </script>
 </head>
 <body id="home">
+
+	<div onclick="closemsj();" class="ui negative message" id="noComplete" style="position: fixed;bottom: -5rem;right: 1rem;z-index: 999;width: 40%; transition: all 1s ease;">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    Your survey is not complete!
+	  </div>
+	</div>
+
 	<div style="position: fixed; top: 0px; right: 0px; left: 0px; padding-bottom: 1rem; z-index: 999;" class="ui inverted masthead centered segment">
 		<div class="ui page grid">
 			<div class="column">
@@ -193,18 +254,18 @@ $(function(){
 		<div class="ui main text container" style="max-width: 60rem !important;">
 			<h2 class="ui header">
 				<img class="ui image" src="http://semantic-ui.com/images/icons/school.png">
-				<div class="content"> Personal Information </div>
+				<div class="content"> Respondent Information </div>
 			</h2>
 			<!--   FORM   -->
 			<form class="ui form aForm">
 				<div class="field">
 					<div class="four fields">
 						<div class="field">
-							<div class="default text">First Name (optional)</div>
+							<div class="default text">First Name <span class="_red">(*)</span></div>
 							<input type="text" placeholder="First Name" value="<?php echo $o_bd->result($res, "fname"); ?>" name="first-name" id="fnam">
 						</div>
 						<div class="field">
-							<div class="default text">Last Name (optional)</div>
+							<div class="default text">Last Name <span class="_red">(*)</span></div>
 							<input type="text" placeholder="Last Name" value="<?php echo $o_bd->result($res, "lname"); ?>" name="last-name" id="lnam">
 						</div>
 						<div class="field">
@@ -212,7 +273,7 @@ $(function(){
 							<input type="text" placeholder="Your Organisation" value="<?php echo $o_bd->result($res, "organization"); ?>" name="org" id="org">
 						</div>
 						<div class="field">
-							<div class="default text">Job title <span class="_red">(*)</span></div>
+							<div class="default text">Job title </div>
 							<input type="text" placeholder="Job title" value="<?php echo $o_bd->result($res, "job"); ?>" name="job" id="job">
 						</div>
 					</div>
@@ -220,11 +281,11 @@ $(function(){
 				<div class="field">
 					<div class="fields">
 						<div class="field wide four">
-							<div class="default text">Email (optional)</div>
+							<div class="default text">Email </div>
 							<input type="text" placeholder="Email" value="<?php echo $o_bd->result($res, "email"); ?>" name="ema" id="ema">
 						</div>
 						<div class="field wide four">
-							<div class="default text">Telephone (optional)</div>
+							<div class="default text">Telephone </div>
 							<input type="text" placeholder="Area code | Number" value="<?php echo $o_bd->result($res, "telephone"); ?>" name="tel" id="tel">
 						</div>
 						<div class="field wide eight">
@@ -252,10 +313,11 @@ $(function(){
 							<option value="Carrier" <?php $r = strpos(",".$a_typorg[0].",", ",Carrier,"); if($r!==FALSE){ echo "selected"; } ?>>Carrier</option>
 							<option value="Shipping agent" <?php $r = strpos(",".$a_typorg[0].",", ",Shipping agent,"); if($r!==FALSE){ echo "selected"; } ?>>Shipping agent</option>
 							<option value="Port operator" <?php $r = strpos(",".$a_typorg[0].",", ",Port operator,"); if($r!==FALSE){ echo "selected"; } ?>>Port operator</option>
+							<option value="Other" <?php $r = strpos(",".$a_typorg[0].",", ",Other,"); if($r!==FALSE){ echo "selected"; } ?>>Other</option>
 							</select>
 						</div>
-						<div class="field wide four">
-							<div class="default text">Other, please specify</div>
+						<div class="field wide four" id="__q18" style="display: none">
+							<div class="default text">Other, please specify <span class="_red">(*)</span></div>
 							<input type="text" placeholder="Specify" name="other_cat" id="otyporg" value="<?php echo $a_typorg[1]; ?>">
 						</div>
 					</div>
@@ -274,21 +336,26 @@ $(function(){
 								<option value="Melbourne" <?php if("Melbourne"==$a_cou[0]){ echo "selected"; } ?>>Melbourne</option>
 								<option value="Sydney" <?php if("Sydney"==$a_cou[0]){ echo "selected"; } ?>>Sydney</option>
 								<option value="Perth" <?php if("Perth"==$a_cou[0]){ echo "selected"; } ?>>Perth</option>
-								<option value="">Other</option>
+								<option value="Other" <?php if("Other"==$a_cou[0]){ echo "selected"; } ?>>Other</option>
 								</select>
 							</div>
-							<div class="field wide four">
-								<div class="default text">Other, please specify</div>
+							<div class="field wide four" id="__q19" style="display: none">
+								<div class="default text">Other, please specify <span class="_red">(*)</span></div>
 								<input type="text" placeholder="Specify" name="other_loc" id="ocou" value="<?php echo $a_cou[1]; ?>">
+							</div>
+							<div class="field wide eight">
+								<div style="float: right; margin-top: 1.5rem;" class="ui button primary" tabindex="0" onclick="actualizar();">Update personal info</div>
 							</div>
 						</div>
 					</div>
-					<div class="ui button" tabindex="0" onclick="actualizar();">Update personal info</div>
+
+					<h5><span class="_red">(*)</span> mandatory response</h5>
+					
 				</form>
 				<!--   END FORM   -->
 				
-				<h4 class="ui horizontal divider header"><i class="tag icon"></i> Main Questions </h4>
-				<div class="ui segments">
+				<h4 class="ui horizontal divider header"><i class="tag icon"></i> General Questions </h4>
+				<div class="ui segments" id="blq1">
 					<div class="ui secondary segment"><p class="simple">1.- Thinking about the costs and efficiency of international trade as experienced by your business, please describe up to three areas for improvement, in order of priority.</p></div>
 					<div class="ui segment">
 						<div class="ui labeled fluid input" style="margin-bottom: 5px;">
@@ -305,7 +372,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq2">
 					<div class="ui secondary segment"><p class="simple">2.- Thinking about Australia’s import/export laws and procedures, please describe up to three changes you would like to see which could reduce costs or improve the efficiency of international trade.</p></div>
 					<div class="ui segment">
 						<div class="ui labeled fluid input" style="margin-bottom: 5px;">
@@ -322,7 +389,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq3">
 					<div class="ui secondary segment"><p class="simple">3.- Prior to learning of the project of which this survey forms a part, were you aware of the existence of the Australian National Committee on Trade Facilitation (ANCTF)?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -366,7 +433,7 @@ $(function(){
 				</div>
 				
 				<h4 class="ui horizontal divider header"><i class="tag icon"></i> Regarding the ANCTF </h4>
-				<div class="ui segments">
+				<div class="ui segments" id="blq4">
 					<div class="ui secondary segment"><p class="simple">4.- Currently, the ANCTF operates under the government’s administrative arrangements. Should the existence of the ANCTF be enshrined in a legal framework?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -387,7 +454,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq5">
 					<div class="ui secondary segment"><p class="simple">5.- How strong should the role of the private sector be in the ANCTF?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -414,7 +481,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq6">
 					<div class="ui secondary segment"><p class="simple">6.- Who should chair the ANCTF?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -459,7 +526,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq7">
 					<div class="ui secondary segment"><p class="simple">7.- Should the chairmanship be rotated?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -470,7 +537,7 @@ $(function(){
 										<label>YES</label>
 									</div>
 								</div>
-								<div class="field" style="display: none" id="__q3"><input type="text" name="q8a" id="q8a" placeholder="Please specify" value="<?php echo $p8[1]; ?>"></div>
+
 								<div class="field">
 									<div class="ui radio checkbox">
 										<input type="radio" name="q8" id="q8" value="no" <?php if($p8[0]=="no"){ echo "checked"; } ?>>
@@ -481,8 +548,17 @@ $(function(){
 						</div>
 					</div>
 				</div>
+
+				<div class="ui segments" id="__q3" style="display: none">
+					<div class="ui secondary segment"><p class="simple">7.a.- Please describe how you think this should work.</p></div>
+					<div class="ui segment">
+						<div class="ui form">
+							<div class="field"><textarea rows="2" name="q8a" id="q8a"><?php echo $p8[1]; ?></textarea></div>
+						</div>
+					</div>
+				</div>
 				
-				<div class="ui segments">
+				<div class="ui segments" id="blq8">
 					<div class="ui secondary segment"><p class="simple">8.- Should there be joint Chairs of the ANCTF?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -511,7 +587,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq9">
 					<div class="ui secondary segment"><p class="simple">9.- Should the ANCTF make public its Terms of Reference, Membership, Mission/Goals/Objectives, Work Plans and periodic reports on its activities?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -532,7 +608,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq10">
 					<div class="ui secondary segment"><p class="simple">10.- Should the Terms of Reference of the ANCTF be limited to its role under Article 23.2 of the WTO Trade Facilitation Agreement (“domestic coordination and implementation of the provisions of the Agreement”) or extend to a wider trade facilitation agenda for Australia?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -554,7 +630,7 @@ $(function(){
 					</div>
 				</div>
 				
-				<div class="ui segments">
+				<div class="ui segments" id="blq11">
 					<div class="ui secondary segment"><p class="simple">11.- Who should fund the ANCTF?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -572,7 +648,6 @@ $(function(){
 										<label>Private sector</label>
 									</div>
 								</div>
-								<div class="field" id="__q5" style="display: none"><input type="text" name="q13b" id="q13b" placeholder="Please specify" value="<?php echo $p13[2]; ?>"></div>
 								<div class="field">
 									<div class="ui radio checkbox">
 										<input type="radio" name="q13" id="q13" value="3" <?php if($p13[0]=="3"){ echo "checked"; } ?>>
@@ -583,7 +658,18 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+
+				<div class="ui segments" id="__q5" style="display: none">
+					<div class="ui secondary segment"><p class="simple">11.a.- Please describe how you think this should work.</p></div>
+					<div class="ui segment">
+						<div class="ui form">
+							<div class="field"><textarea rows="2" name="q13b" id="q13b"><?php echo $p13[2]; ?></textarea></div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="ui segments" id="blq12">
 					<div class="ui secondary segment"><p class="simple">12.- Who should provide the Secretariat of the ANCTF?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -594,14 +680,14 @@ $(function(){
 										<label>Government</label>
 									</div>
 								</div>
-								<div class="field" id="__q6" style="display: none"><input type="text" name="q14a" id="q14a" placeholder="Please specify organization" value="<?php echo $p14[1]; ?>"></div>
+								<div class="field" id="__q6" style="display: none"><input type="text" name="q14a" id="q14a" placeholder="Please specify agency" value="<?php echo $p14[1]; ?>"></div>
 								<div class="field">
 									<div class="ui radio checkbox">
 										<input type="radio" name="q14" id="q14" value="2" <?php if($p14[0]=="2"){ echo "checked"; } ?>>
 										<label>Private sector</label>
 									</div>
 								</div>
-								<div class="field" id="__q7" style="display: none"><input type="text" name="q14b" id="q14b" placeholder="Please specify" value="<?php echo $p14[2]; ?>"></div>
+								<div class="field" id="__q7" style="display: none"><input type="text" name="q14b" id="q14b" placeholder="Please specify organization" value="<?php echo $p14[2]; ?>"></div>
 								<div class="field">
 									<div class="ui radio checkbox">
 										<input type="radio" name="q14" id="q14" value="3" <?php if($p14[0]=="3"){ echo "checked"; } ?>>
@@ -612,7 +698,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq13">
 					<div class="ui secondary segment"><p class="simple">13.- Where should ANCTF meetings be held?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -641,7 +727,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq14">
 					<div class="ui secondary segment"><p class="simple">14.- How often should the ANCTF meet?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -682,106 +768,106 @@ $(function(){
 					</div>
 				</div>
 				
-				<div class="ui segments">
+				<div class="ui segments" id="blq15">
 					<div class="ui secondary segment"><p class="simple">15.- The Government agencies currently represented on the ANCTF are the Department of Immigration and Border Protection, the Australian Border Force, the Department of Foreign Affairs and Trade, Austrade, the Department of Agriculture and Water Resources, the Department of Industry, Innovation and Science and the Department of Infrastructure and Regional Development. Which other Government agencies, if any, should participate?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
 							<div class="grouped fields">
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="1" <?php if($p17[0]=="1"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17a" value="1" <?php if($p17[0]=="1"){ echo "checked"; } ?>>
 										<label>Office of Transport Security</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="2" <?php if($p17[0]=="2"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17b" value="2" <?php if($p17[1]=="1"){ echo "checked"; } ?>>
 										<label>Department of Environment</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="3" <?php if($p17[0]=="3"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17c" value="3" <?php if($p17[2]=="1"){ echo "checked"; } ?>>
 										<label>Department of Finance</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="4" <?php if($p17[0]=="4"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17d" value="4" <?php if($p17[3]=="1"){ echo "checked"; } ?>>
 										<label>Department of Health</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="5" <?php if($p17[0]=="5"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17e" value="5" <?php if($p17[4]=="1"){ echo "checked"; } ?>>
 										<label>Digital Transformation Office</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="6" <?php if($p17[0]=="6"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17f" value="6" <?php if($p17[5]=="1"){ echo "checked"; } ?>>
 										<label>Infrastructure Australia</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="7" <?php if($p17[0]=="7"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17g" value="7" <?php if($p17[6]=="1"){ echo "checked"; } ?>>
 										<label>State Government agencies</label>
 									</div>
 								</div>
-								<div class="field" id="__q11" style="display: none"><input type="text" name="q17a" id="q17a" placeholder="Please specify" value="<?php echo $p17[1]; ?>"></div>
+								<div class="field" id="__q11" style="display: none"><input type="text" name="q17" id="q17ga" placeholder="Please specify" value="<?php echo $p17[7]; ?>"></div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q17" id="q17" value="8" <?php if($p17[0]=="8"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q17" id="q17h" value="8" <?php if($p17[8]=="1"){ echo "checked"; } ?>>
 										<label>Other</label>
 									</div>
 								</div>
-								<div class="field" id="__q12" style="display: none"><input type="text" name="q17b" id="q17b" placeholder="Please specify" value="<?php echo $p17[2]; ?>"></div>
+								<div class="field" id="__q12" style="display: none"><input type="text" name="q17" id="q17ha" placeholder="Please specify" value="<?php echo $p17[9]; ?>"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq16">
 					<div class="ui secondary segment"><p class="simple">16.- The private sector and academic organisations currently represented on the ANCTF are the Australian Federation of International Forwarders, the Customs Brokers and Forwarders Council of Australian, the Export Council of Australia, the Conference of Asia Pacific Express Carriers, Shipping Australia Limited, the American Chamber of Commerce in Australia, the Australian Chamber of Commerce and Industry, the Australian Industry Group, the Board of Airline Representatives of Australia, the Federal Chamber of Automotive Industries, the Food and Beverage Importers Association, Freight and Trade Alliance and the International Network of Customs Universities. Which other private sector organisations, if any, should participate?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
 							<div class="grouped fields">
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q18" id="q18" value="1" <?php if($p18[0]=="1"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q18" id="q18a" value="1" <?php if($p18[0]=="1"){ echo "checked"; } ?>>
 										<label>Representatives of the insurance industry</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q18" id="q18" value="2" <?php if($p18[0]=="2"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q18" id="q18b" value="2" <?php if($p18[1]=="1"){ echo "checked"; } ?>>
 										<label>Representatives of the finance industry</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q18" id="q18" value="3" <?php if($p18[0]=="3"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q18" id="q18c" value="3" <?php if($p18[2]=="1"){ echo "checked"; } ?>>
 										<label>Port/airport operators</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q18" id="q18" value="4" <?php if($p18[0]=="4"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q18" id="q18d" value="4" <?php if($p18[3]=="1"){ echo "checked"; } ?>>
 										<label>Private laboratories/certification agencies</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q18" id="q18" value="5" <?php if($p18[0]=="5"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q18" id="q18e" value="5" <?php if($p18[4]=="1"){ echo "checked"; } ?>>
 										<label>Other</label>
 									</div>
 								</div>
-								<div class="field" id="__q13" style="display: none"><input type="text" name="q18a" id="q18a" placeholder="Please specify" value="<?php echo $p18[1]; ?>"></div>
+								<div class="field" id="__q13" style="display: none"><input type="text" name="q18" id="q18ea" placeholder="Please specify" value="<?php echo $p18[5]; ?>"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq17">
 					<div class="ui secondary segment"><p class="simple">17.- Should the ANCTF actively liaise with National Committees for Trade Facilitation in key trading partner countries and with any Regional Committees for Trade Facilitation?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -802,7 +888,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="ui segments">
+				<div class="ui segments" id="blq18">
 					<div class="ui secondary segment"><p class="simple">18.- Should the ANCTF actively engage in consultation between government and the wider business community?</p></div>
 					<div class="ui segment">
 						<div class="ui form">
@@ -830,48 +916,48 @@ $(function(){
 						<div class="ui form">
 							<div class="grouped fields">
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="1" <?php if($p21[0]=="1"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21a" value="1" <?php if($p21[0]=="1"){ echo "checked"; } ?>>
 										<label>Permanent consultative committees</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="2" <?php if($p21[0]=="2"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21b" value="2" <?php if($p21[1]=="1"){ echo "checked"; } ?>>
 										<label>Centres of excellence or expertise</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="3" <?php if($p21[0]=="3"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21c" value="3" <?php if($p21[2]=="1"){ echo "checked"; } ?>>
 										<label>Network of subject-matter experts</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="4" <?php if($p21[0]=="4"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21d" value="4" <?php if($p21[3]=="1"){ echo "checked"; } ?>>
 										<label>Peer-to-peer groups</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="5" <?php if($p21[0]=="5"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21e" value="5" <?php if($p21[4]=="1"){ echo "checked"; } ?>>
 										<label>Implementation working parties</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="6" <?php if($p21[0]=="6"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21f" value="6" <?php if($p21[5]=="1"){ echo "checked"; } ?>>
 										<label>Conferences</label>
 									</div>
 								</div>
 								<div class="field">
-									<div class="ui radio checkbox">
-										<input type="radio" name="q21" id="q21" value="7" <?php if($p21[0]=="7"){ echo "checked"; } ?>>
+									<div class="ui checkbox">
+										<input type="checkbox" name="q21" id="q21g" value="7" <?php if($p21[6]=="1"){ echo "checked"; } ?>>
 										<label>Other</label>
 									</div>
 								</div>
-								<div class="field" id="__q15" style="display: none"><input type="text" name="q21a" id="q21a" placeholder="Please specify" value="<?php echo $p21[1]; ?>"></div>
+								<div class="field" id="__q15" style="display: none"><input type="text" name="q21" id="q21ga" placeholder="Please specify" value="<?php echo $p21[7]; ?>"></div>
 							</div>
 						</div>
 					</div>
@@ -890,7 +976,7 @@ $(function(){
 				<div class="ten wide column">
 					<h5 class="ui inverted header" style="text-align: left;">Instituto Peruano de Facilitación del Comercio</h5>
 						<div class="ui inverted link list">
-							<p style="text-align: justify; font-style: italic;">IFCOM is an independent private organization engaged in promoting facilitation of trade through research, analysis and training. Foreign trade proceedings need to be efficient and oriented to reducing cost, easing the internationalization of companies, to boost the country´s competitiveness and growth.</p>
+							<p style="text-align: justify; font-style: italic;">IFCOM is an independent private organization engaged in promoting facilitation of trade through research, analysis and training.  Our philosophy is that international trade should proceed efficiently and be oriented to reducing cost, easing the international activities of business, to boost a country´s competitiveness and growth.</p>
 						</div>
 				</div>
 				<div class="six wide column">
@@ -926,7 +1012,28 @@ $(function(){
   </div>
 </div>
 
-<!-- COMPLETE MODAL -->
+<!-- CONFIRM MODAL -->
+<div class="ui basic modal __confirm">
+  <div class="ui icon header">
+    <i class="warning sign icon"></i>
+    Warning
+  </div>
+  <div class="content">
+    <p>Once you finalize and submit your survey you will not be able to change your responses. Please print out a copy of your response for your records.</p>
+  </div>
+  <div class="actions">
+    <div class="ui green basic cancel inverted button">
+      <i class="checkmark icon"></i>
+      Return to Survey
+    </div>
+    <div class="ui green inverted cancel button" onclick="thankYou();">
+      <i class="remove icon"></i>
+      Confirm submission
+    </div>
+  </div>
+</div>
+
+<!-- THANKS MODAL -->
 <div class="ui basic modal __submit">
   <div class="ui icon header">
     <i class="trophy icon"></i>
@@ -974,7 +1081,18 @@ function actualizar(){
 		}
 	});
 }
+function closemsj(){
+	$("#noComplete").css("bottom", "-5rem" );
+}
 function grabar(type){
+
+	if(!checkComplete() && type){
+		$("#noComplete").css("bottom", "1rem" );
+		return;
+	}
+	
+	
+
 	var art = ""; var blo = ""; var pre = ""; var subpre = ""; var valor  = "";
 	
 	art = "1"; blo = "1";
@@ -1139,8 +1257,18 @@ function grabar(type){
 		}
 	});
 	
+	// pre = "17";
+	// subpre = "1"; valor = $("input[name='q17']:checked").val()+"|"+$("#q17a").val()+"|"+$("#q17b").val();
+	// $.ajax({
+	// 	type: "POST",
+	// 	data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
+	// 	url: "control/respuesta.php",
+	// 	success: function(respuesta){
+	// 	}
+	// });
+
 	pre = "17";
-	subpre = "1"; valor = $("input[name='q17']:checked").val()+"|"+$("#q17a").val()+"|"+$("#q17b").val();
+	subpre = "1"; valor = (+$("#q17a").is(':checked'))+"|"+(+$("#q17b").is(':checked'))+"|"+(+$("#q17c").is(':checked'))+"|"+(+$("#q17d").is(':checked'))+"|"+(+$("#q17e").is(':checked'))+"|"+(+$("#q17f").is(':checked'))+"|"+(+$("#q17g").is(':checked'))+"|"+($("#q17ga").val())+"|"+(+$("#q17h").is(':checked'))+"|"+($("#q17ha").val());
 	$.ajax({
 		type: "POST",
 		data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
@@ -1149,8 +1277,18 @@ function grabar(type){
 		}
 	});
 	
+	// pre = "18";
+	// subpre = "1"; valor = $("input[name='q18']:checked").val()+"|"+$("#q18a").val();
+	// $.ajax({
+	// 	type: "POST",
+	// 	data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
+	// 	url: "control/respuesta.php",
+	// 	success: function(respuesta){
+	// 	}
+	// });
+
 	pre = "18";
-	subpre = "1"; valor = $("input[name='q18']:checked").val()+"|"+$("#q18a").val();
+	subpre = "1"; valor = (+$("#q18a").is(':checked'))+"|"+(+$("#q18b").is(':checked'))+"|"+(+$("#q18c").is(':checked'))+"|"+(+$("#q18d").is(':checked'))+"|"+(+$("#q18e").is(':checked'))+"|"+($("#q18ea").val());
 	$.ajax({
 		type: "POST",
 		data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
@@ -1179,8 +1317,18 @@ function grabar(type){
 		}
 	});
 	
+	// pre = "21";
+	// subpre = "1"; valor = $("input[name='q21']:checked").val()+"|"+$("#q21a").val();;
+	// $.ajax({
+	// 	type: "POST",
+	// 	data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
+	// 	url: "control/respuesta.php",
+	// 	success: function(respuesta){
+	// 	}
+	// });
+
 	pre = "21";
-	subpre = "1"; valor = $("input[name='q21']:checked").val()+"|"+$("#q21a").val();;
+	subpre = "1"; valor = (+$("#q21a").is(':checked'))+"|"+(+$("#q21b").is(':checked'))+"|"+(+$("#q21c").is(':checked'))+"|"+(+$("#q21d").is(':checked'))+"|"+(+$("#q21e").is(':checked'))+"|"+(+$("#q21f").is(':checked'))+"|"+(+$("#q21g").is(':checked'))+"|"+($("#q21ga").val());
 	$.ajax({
 		type: "POST",
 		data: "id=&art="+art+"&blo="+blo+"&pre="+pre+"&subpre="+subpre+"&valor="+valor+"&modo=add",
@@ -1188,15 +1336,53 @@ function grabar(type){
 		success: function(respuesta){
 		}
 	});
+
 	
 	if(type){
-		$('.__submit').modal('show');
+		//$('.__submit').modal('show');
+		$('.__confirm').modal('show');
 	}else{
 		$('.__save').modal('show');
 	}
 	//alert("Survey Complete!");
 	//location.href = "cerrar.php";
 
+}
+
+function checkComplete(){
+	if($("#q1a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq1').offset().top - 85) }, 1000); return;}
+	if($("#q2a").val() == ""){ $("html, body").animate({ scrollTop: ($('#blq2').offset().top - 85) }, 1000); return;}
+	if($("input[name='q3']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq3').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q5']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq4').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q6']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq5').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q7']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq6').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q8']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq7').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q9']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq8').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q11']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq9').offset().top - 85) }, 1000); return false;}
+
+	if($("input[name='q12']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq10').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q13']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq11').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q14']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq12').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q15']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq13').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q16']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq14').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q17']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq15').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q18']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq16').offset().top - 85) }, 1000); return false;}
+
+	if($("input[name='q19']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq17').offset().top - 85) }, 1000); return false;}
+	if($("input[name='q20']:checked").val() == undefined){ $("html, body").animate({ scrollTop: ($('#blq18').offset().top - 85) }, 1000); return false;}
+
+	return true;
+}
+function thankYou(){
+	$.ajax({
+		type: "POST",
+		data: "id=&modo=ter",
+		url: "control/respuesta.php",
+		success: function(respuesta){
+			$('.__submit').modal('show');
+		}
+	});
+	
 }
 function goHome(){
 	location.href = "cerrar.php";

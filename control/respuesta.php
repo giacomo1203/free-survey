@@ -1,4 +1,7 @@
 <?php
+
+	ini_set('memory_limit', 512000000);
+
 	include("../sesion.php");
 	include("../bd/bd.php");
 	include("../inc/funcion.php");
@@ -28,5 +31,8 @@
 		$id = $_REQUEST['id'];
 		$o_bd->proceso("delete from respuesta where id=$id");
 		echo "Registro eliminado correctamente.";
+	}elseif($modo=="ter"){
+		$o_bd->proceso("update usuario set est_enc='0' where id=$c_id");
 	}
+	
 ?>

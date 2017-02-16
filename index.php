@@ -101,7 +101,7 @@
 			<div class="ten wide column">
 				<h5 class="ui inverted header" style="text-align: left;">Instituto Peruano de Facilitación del Comercio</h5>
 					<div class="ui inverted link list">
-						<p style="text-align: justify; font-style: italic;">IFCOM is an independent private organization engaged in promoting facilitation of trade through research, analysis and training. Foreign trade proceedings need to be efficient and oriented to reducing cost, easing the internationalization of companies, to boost the country´s competitiveness and growth.</p>
+						<p style="text-align: justify; font-style: italic;">IFCOM is an independent private organization engaged in promoting facilitation of trade through research, analysis and training.  Our philosophy is that international trade should proceed efficiently and be oriented to reducing cost, easing the international activities of business, to boost a country´s competitiveness and growth.</p>
 					</div>
 			</div>
 			<div class="six wide column">
@@ -151,7 +151,7 @@
 			<i class="add user icon"></i>Register
 		</div>
 		<div class="content center">
-			<!--<h5>If you have any progress from this survey, please continue!</h5>-->
+			<h5>Choose your own user name and password.</h5>
 			<form class="ui form">
 				<div class="three fields">
 					<div class="field left">
