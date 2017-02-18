@@ -100,17 +100,17 @@ $(function(){
           $('#__q3').transition('bounce');
         }
     });
-    $('input[type=radio][name=q13]').change(function() {
-    	var tmp = this.value;
-        $('#__q4, #__q5').fadeOut(500);
-        if(tmp==1){
-          $('#__q4').fadeIn(500);
-        }else{
-        	console.log(tmp);
-          $('#__q5').fadeIn(500);
-    	}
+    // $('input[type=radio][name=q13]').change(function() {
+    // 	var tmp = this.value;
+    //     $('#__q4, #__q5').fadeOut(500);
+    //     if(tmp==1){
+    //       $('#__q4').fadeIn(500);
+    //     }else{
+    //     	console.log(tmp);
+    //       $('#__q5').fadeIn(500);
+    // 	}
         
-    });
+    // });
     $('input[type=radio][name=q14]').change(function() {
         $('#__q6, #__q7').fadeOut(500);
         if(this.value==1){
@@ -210,8 +210,8 @@ $(function(){
     <?php if($p7[0]=="5"){ echo "$('#__q2').transition('bounce');"; } ?>
     <?php if($p8[0]=="yes"){ echo "$('#__q3').transition('bounce');"; } ?>
     <?php if($p9=="yes"){ echo "$('#__q17').transition('bounce');"; } ?>
-    <?php if($p13[0]=="1"){ echo "$('#__q4').transition('bounce');"; } ?>
-    <?php if($p13[0]=="2"){ echo "$('#__q5').transition('bounce');"; } ?>
+    <?php //if($p13[0]=="1"){ echo "$('#__q4').transition('bounce');"; } ?>
+    <?php //if($p13[0]=="2"){ echo "$('#__q5').transition('bounce');"; } ?>
     <?php if($p14[0]=="1"){ echo "$('#__q6').transition('bounce');"; } ?>
     <?php if($p14[0]=="2"){ echo "$('#__q7').transition('bounce');"; } ?>
     <?php if($p15[0]=="1"){ echo "$('#__q8').transition('bounce');"; } ?>
