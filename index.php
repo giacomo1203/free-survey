@@ -1,3 +1,21 @@
+<?php
+	
+	$tk = $_REQUEST['token'];
+	$codes = array(100, 101, 102, 103, 104, 105);
+
+	function numhash($n) {
+	    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
+	};
+
+	echo $tk_rv = numhash($tk);
+
+	if(!in_array($tk_rv, $codes)){
+		header("Location: http://ipfcom.org");
+		die();
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,7 +240,7 @@
 	   }
 	   $.ajax({
 	       type: "POST",
-	       data: "usu="+usu+"&pas="+pas+"&fnam="+pno+"&lnam="+sno+"&modo=add",
+	       data: "usu="+usu+"&pas="+pas+"&fnam="+pno+"&lnam="+sno+"&modo=add&gru="<?php echo $tk; ?>,
 	       url: "control/usuario.php",
 	       success: function(respuesta){
 	           // $("#txrfnam").val('');
