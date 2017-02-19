@@ -995,7 +995,7 @@ $(function(){
 <div class="ui basic modal __save">
   <div class="ui icon header">
     <i class="save icon"></i>
-    Responses was saved!
+    Your responses were saved
   </div>
   <div class="content">
     <p>Your survey is incomplete, please return within the next 10 days to continue, finalize and submit your survey.</p>
