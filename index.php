@@ -7,7 +7,7 @@
 	    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
 	};
 
-	echo $tk_rv = numhash($tk);
+	$tk_rv = numhash($tk);
 
 	if(!in_array($tk_rv, $codes)){
 		header("Location: http://ipfcom.org");
