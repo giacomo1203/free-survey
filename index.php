@@ -195,7 +195,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-
+	
 	function registro(){
 	   //var pno = $("#txrfnam").val();
 	   //var sno = $("#txrlnam").val();
@@ -249,7 +249,6 @@
 	           // $("#txrusu").val('');
 	           // $("#txrpas").val('');
 	           // $("#txcpas").val('');
-	           console.log(respuesta);
 	           if(respuesta=="1"){
 	               location.href='home.php';
 	           }else if(respuesta=="2"){
