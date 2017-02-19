@@ -1,6 +1,6 @@
 <?php
 	
-	$tk = $_REQUEST['token'];
+	$tk = intval($_REQUEST['token']);
 	$codes = array(100, 101, 102, 103, 104, 105);
 
 	function numhash($n) {
@@ -195,6 +195,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 	function registro(){
 	   //var pno = $("#txrfnam").val();
 	   //var sno = $("#txrlnam").val();
@@ -240,7 +241,7 @@
 	   }
 	   $.ajax({
 	       type: "POST",
-	       data: "usu="+usu+"&pas="+pas+"&fnam="+pno+"&lnam="+sno+"&modo=add&gru="<?php echo $tk; ?>,
+	       data: "usu="+usu+"&pas="+pas+"&fnam="+pno+"&lnam="+sno+"&modo=add&gru=<?php echo $tk; ?>",
 	       url: "control/usuario.php",
 	       success: function(respuesta){
 	           // $("#txrfnam").val('');
