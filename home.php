@@ -238,7 +238,7 @@ $(function(){
 	  </div>
 	</div>
 
-	<div style="position: fixed; top: 0px; right: 0px; left: 0px; padding-bottom: 1rem; z-index: 999;" class="ui inverted masthead centered segment">
+	<div id="myHead" style="position: fixed; top: 0px; right: 0px; left: 0px; padding-bottom: 1rem; z-index: 999;" class="ui inverted masthead centered segment">
 		<div class="ui page grid">
 			<div class="column">
 				<div class="ui secondary pointing menu">
@@ -250,7 +250,7 @@ $(function(){
 		</div>
 	</div>
 	
-	<div class="ui vertical feature segment" style="margin-top: 8rem;">
+	<div class="ui vertical feature segment" id="myContent" style="margin-top: 8rem;">
 		<div class="ui main text container" style="max-width: 60rem !important;">
 			<h2 class="ui header">
 				<img class="ui image" src="http://semantic-ui.com/images/icons/school.png">
@@ -1022,6 +1022,10 @@ $(function(){
     <p>Once you finalize and submit your survey you will not be able to change your responses. Please print out a copy of your response for your records.</p>
   </div>
   <div class="actions">
+  	<div class="ui green basic inverted button" onclick="printResults();">
+      <i class="print icon"></i>
+      Print Survey
+    </div>
     <div class="ui green basic cancel inverted button">
       <i class="checkmark icon"></i>
       Return to Survey
@@ -1447,6 +1451,15 @@ function thankYou(){
 		}
 	});
 	
+}
+function printResults(){
+	var pc = document.getElementById("myContent").innerHTML;
+	var ph = document.getElementById("myhead").innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = ph+pc;
+    window.print();
+    document.body.innerHTML = originalContents;
 }
 function goHome(){
 	location.href = "cerrar.php";
