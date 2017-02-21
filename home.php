@@ -1453,8 +1453,8 @@ function thankYou(){
 	
 }
 function printResults(){
+	var ph = document.getElementById("myHead").innerHTML;
 	var pc = document.getElementById("myContent").innerHTML;
-	var ph = document.getElementById("myhead").innerHTML;
     var originalContents = document.body.innerHTML;
 
     document.body.innerHTML = ph+pc;
