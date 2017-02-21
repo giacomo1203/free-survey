@@ -1024,7 +1024,7 @@ $(function(){
   <div class="actions">
   	<div class="ui green basic inverted button" onclick="printResults();">
       <i class="print icon"></i>
-      Print Survey
+      Print a copy
     </div>
     <div class="ui green basic cancel inverted button">
       <i class="checkmark icon"></i>
