@@ -38,7 +38,7 @@ table.gridtable td {
 	<th>Username</th>
 	<th>Name</th>
 	<th>Group</th>
-	<th>Complete</th>
+	<th>Incomplete</th>
 	<th>1a</th>
 	<th>1b</th>
 	<th>1c</th>
