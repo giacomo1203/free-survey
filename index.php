@@ -10,7 +10,7 @@
 	$tk_rv = numhash($tk);
 
 	if(!in_array($tk_rv, $codes)){
-		header("Location: http://ipfcom.org");
+		header("Location: http://customscentre.com/");
 		die();
 	}
 
