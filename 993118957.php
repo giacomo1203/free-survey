@@ -2,7 +2,7 @@
 	include("bd/bd.php");
 	$o_bd = new BD();
 	
-	$res = $o_bd->consulta("select id, fname, lname from usuario where estado='1' order by fname, lname");
+	$res = $o_bd->consulta("select id, usu, est_enc, gru_enc, fname, lname from usuario where estado='1' order by fname, lname");
 	$num = $o_bd->num_rows($res);
 ?>
 <html>
@@ -35,7 +35,10 @@ table.gridtable td {
 <body>
 <table border="0" cellpadding="0" cellspacing="0" class="gridtable">
 <tr>
-	<th>Usuario</th>
+	<th>Username</th>
+	<th>Name</th>
+	<th>Group</th>
+	<th>Complete</th>
 	<th>1a</th>
 	<th>1b</th>
 	<th>1c</th>
@@ -101,7 +104,10 @@ table.gridtable td {
 			$num_r = $o_bd->num_rows($res_r);
 ?>
 			<tr>
+				<td><?php echo $f["usu"]; ?></td>
 				<td><?php echo $f["fname"]." ".$f["lname"]; ?></td>
+				<td><?php echo $f["gru_enc"]; ?></td>
+				<td><?php echo $f["est_enc"]; ?></td>
 				<?php
 					if($num_r>0){
 						while($fr=$o_bd->fetch_assoc($res_r)){
