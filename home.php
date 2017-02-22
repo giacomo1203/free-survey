@@ -1022,10 +1022,10 @@ $(function(){
     <p>Once you finalize and submit your survey you will not be able to change your responses. Please print out a copy of your response for your records.</p>
   </div>
   <div class="actions">
-  	<div class="ui green basic inverted button" onclick="printResults();">
+  	<!-- <div class="ui green basic inverted button" onclick="printResults();">
       <i class="print icon"></i>
       Print a copy
-    </div>
+    </div> -->
     <div class="ui green basic cancel inverted button">
       <i class="checkmark icon"></i>
       Return to Survey
