@@ -104,6 +104,9 @@ table.gridtable td {
 			$num_r = $o_bd->num_rows($res_r);
 			
 			$existe = "0";
+
+			if($num_r>0){
+
 ?>
 			<tr>
 				<td><?php echo $f["usu"]; ?></td>
@@ -285,6 +288,7 @@ table.gridtable td {
 				?>
 			</tr>
 <?php
+			}
 		}
 	}
 ?>
