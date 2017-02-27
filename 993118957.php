@@ -15,10 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
 	
 	</style>
-	<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" src="/media/js/site.js?_=9a83ad61fa12260d710e54eb5f3203dc">
-	</script>
-	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=extensions%2Fbuttons%2Fexamples%2Fhtml5%2Fsimple.html" async="">
-	</script>
+
+
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js">
 	</script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
