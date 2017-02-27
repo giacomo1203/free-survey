@@ -102,6 +102,8 @@ table.gridtable td {
 			$pre = 0;
 			$res_r = $o_bd->consulta("select valor from respuesta where usu_id='".$f["id"]."' order by pre_id");
 			$num_r = $o_bd->num_rows($res_r);
+			
+			$existe = "0";
 ?>
 			<tr>
 				<td><?php echo $f["usu"]; ?></td>
@@ -111,67 +113,138 @@ table.gridtable td {
 				<?php
 					if($num_r>0){
 						while($fr=$o_bd->fetch_assoc($res_r)){
+							$existe = "0";
+							$valor = str_replace("undefined", "", $fr["valor"]);
+							
 							$pre++;
-							if($pre==1 || $pre==2 || $pre==7){
-								$a_r = explode("|", $fr["valor"]);
+							if($pre==1 || $pre==2){ //|| $pre==7
+								$existe = "1";
+								$a_r = explode("|", $valor);
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
 							}
 							if($pre==3 || $pre==4 || $pre==5 || $pre==9 || $pre==10 || $pre==11 || $pre==19 || $pre==20){
-								echo "<td>".str_replace("undefined", "", $fr["valor"])."</td>";
+								$existe = "1";
+								echo "<td>$valor</td>";
 							}
 							if($pre==6){
-								$v = $fr["valor"];
-								if($v==1){ echo "<td>Private sector representatives should set the agenda, and should determine the outcomes of ANCTF sessions</td>"; }
-								if($v==2){ echo "<td>Private sector representatives should have an equal status with government representatives in setting the agenda and determining the outcomes of ANCTF sessions</td>"; }
-								if($v==3){ echo "<td>Private sector representatives should have an advisory role only; the government representatives should set the agenda and determine the outcomes of ANCTF sessions</td>"; }
+								$existe = "1";
+								$v = $valor;
+								if($v==1){ 
+									echo "<td>Private sector representatives should set the agenda, and should determine the outcomes of ANCTF sessions</td>";
+								}elseif($v==2){
+									echo "<td>Private sector representatives should have an equal status with government representatives in setting the agenda and determining the outcomes of ANCTF sessions</td>";
+								}elseif($v==3){
+									echo "<td>Private sector representatives should have an advisory role only; the government representatives should set the agenda and determine the outcomes of ANCTF sessions</td>";
+								}else{
+									echo "<td></td>";
+								}
 							}
+							
+							if($pre==7){
+								$existe = "1";
+								$a_r = explode("|", $valor);
+								if($a_r[0]==1){ 
+									echo "<td>Department of Immigration and Border Protection</td>";
+								}elseif($a_r[0]==2){
+									echo "<td>Australian Border Force</td>";
+								}elseif($a_r[0]==3){
+									echo "<td>Department of Foreign Affairs and Trade</td>";
+								}elseif($a_r[0]==4){
+									echo "<td>Other Government agency</td>";
+								}elseif($a_r[0]==5){
+									echo "<td>Private sector organisation</td>";
+								}else{
+									echo "<td></td>";
+								}
+								echo "<td>".$a_r[1]."</td>";
+								echo "<td>".$a_r[2]."</td>";
+							}
+							
 							if($pre==8){
-								$a_r = explode("|", $fr["valor"]);
+								$existe = "1";
+								$a_r = explode("|", $valor);
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
 							}
 							if($pre==12){
-								$v = $fr["valor"];
-								if($v==1){ echo "<td>Limit to Art. 23.2</td>"; }
-								if($v==2){ echo "<td>Extend to wider trade facilitation agenda</td>"; }
+								$existe = "1";
+								$v = $valor;
+								if($v==1){
+									echo "<td>Limit to Art. 23.2</td>";
+								}elseif($v==2){
+									echo "<td>Extend to wider trade facilitation agenda</td>";
+								}else{
+									echo "<td></td>";
+								}
 							}
 							if($pre==13){
-								$a_r = explode("|", $fr["valor"]);
-								if($a_r[0]==1){ echo "<td>Government</td>"; }
-								if($a_r[0]==2){ echo "<td>Private sector</td>"; }
-								if($a_r[0]==3){ echo "<td>Combination of government and private sector</td>"; }
+								$existe = "1";
+								$a_r = explode("|", $valor);
+								if($a_r[0]==1){
+									echo "<td>Government</td>";
+								}elseif($a_r[0]==2){
+									echo "<td>Private sector</td>";
+								}elseif($a_r[0]==3){
+									echo "<td>Combination of government and private sector</td>";
+								}else{
+									echo "<td></td>";
+								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
 							}
 							if($pre==14){
-								$a_r = explode("|", $fr["valor"]);
-								if($a_r[0]==1){ echo "<td>Government</td>"; }
-								if($a_r[0]==2){ echo "<td>Private sector</td>"; }
-								if($a_r[0]==3){ echo "<td>Establish/fund dedicated secretariat</td>"; }
+								$existe = "1";
+								$a_r = explode("|", $valor);
+								if($a_r[0]==1){
+									echo "<td>Government</td>";
+								}elseif($a_r[0]==2){
+									echo "<td>Private sector</td>";
+								}elseif($a_r[0]==3){
+									echo "<td>Establish/fund dedicated secretariat</td>";
+								}else{
+									echo "<td></td>";
+								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
 							}
 							if($pre==15){
-								$a_r = explode("|", $fr["valor"]);
-								if($a_r[0]==1){ echo "<td>Government office</td>"; }
-								if($a_r[0]==2){ echo "<td>Private sector premises</td>"; }
-								if($a_r[0]==3){ echo "<td>Neutral venue (e.g. hotel, university)</td>"; }
+								$existe = "1";
+								$a_r = explode("|", $valor);
+								if($a_r[0]==1){
+									echo "<td>Government office</td>";
+								}elseif($a_r[0]==2){
+									echo "<td>Private sector premises</td>";
+								}elseif($a_r[0]==3){
+									echo "<td>Neutral venue (e.g. hotel, university)</td>";
+								}else{
+									echo "<td></td>";
+								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
 							}
 							if($pre==16){
-								$a_r = explode("|", $fr["valor"]);
-								if($a_r[0]==1){ echo "<td>Once per year</td>"; }
-								if($a_r[0]==2){ echo "<td>Every six months</td>"; }
-								if($a_r[0]==3){ echo "<td>Every quarter</td>"; }
-								if($a_r[0]==4){ echo "<td>Every month</td>"; }
-								if($a_r[0]==5){ echo "<td>Other</td>"; }
+								$existe = "1";
+								$a_r = explode("|", $valor);
+								if($a_r[0]==1){
+									echo "<td>Once per year</td>";
+								}elseif($a_r[0]==2){
+									echo "<td>Every six months</td>";
+								}elseif($a_r[0]==3){
+									echo "<td>Every quarter</td>";
+								}elseif($a_r[0]==4){
+									echo "<td>Every month</td>";
+								}elseif($a_r[0]==5){
+									echo "<td>Other</td>";
+								}else{
+									echo "<td></td>";
+								}
 								echo "<td>".$a_r[1]."</td>";
 							}
 							if($pre==17){
-								$a_r = explode("|", $fr["valor"]);
+								$existe = "1";
+								$a_r = explode("|", $valor);
 								if($a_r[0]==1){ echo "<td>Office of Transport Security</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Department of Environment</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Department of Finance</td>"; }else{ echo "<td></td>"; }
@@ -184,7 +257,8 @@ table.gridtable td {
 								echo "<td>".$a_r[9]."</td>";
 							}
 							if($pre==18){
-								$a_r = explode("|", $fr["valor"]);
+								$existe = "1";
+								$a_r = explode("|", $valor);
 								if($a_r[0]==1){ echo "<td>Representatives of the insurance industry</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Representatives of the finance industry</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Port/airport operators</td>"; }else{ echo "<td></td>"; }
@@ -193,7 +267,8 @@ table.gridtable td {
 								echo "<td>".$a_r[5]."</td>";
 							}
 							if($pre==21){
-								$a_r = explode("|", $fr["valor"]);
+								$existe = "1";
+								$a_r = explode("|", $valor);
 								if($a_r[0]==1){ echo "<td>Permanent consultative committees</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Centres of excellence or expertise</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Network of subject-matter experts</td>"; }else{ echo "<td></td>"; }
@@ -203,6 +278,8 @@ table.gridtable td {
 								if($a_r[6]==1){ echo "<td>Other</td>"; }else{ echo "<td></td>"; }
 								echo "<td>".$a_r[7]."</td>";
 							}
+							
+							if($existe=="0"){ echo "<td></td>"; }
 						}
 					}
 				?>
