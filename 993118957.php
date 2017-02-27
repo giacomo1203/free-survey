@@ -7,18 +7,50 @@
 ?>
 <html>
 <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>DataTables example - HTML5 export buttons</title>
 	
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
-
+	
+	</style>
+	<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" src="/media/js/site.js?_=9a83ad61fa12260d710e54eb5f3203dc">
+	</script>
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=extensions%2Fbuttons%2Fexamples%2Fhtml5%2Fsimple.html" async="">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js">
+	</script>
+	<script type="text/javascript" class="init">
+			$(document).ready(function() {
+				$('#example').DataTable( {
+					dom: 'Bfrtip',
+					buttons: [
+						{
+							extend: 'copyHtml5',
+			                exportOptions: {
+			                 columns: ':contains("Office")'
+			                }
+			            },
+						'excelHtml5',
+						'csvHtml5',
+						'pdfHtml5'
+					]
+				} );
+			} );
+	</script>
 </head>
 <body>
 <table id="example" border="0" cellpadding="0" cellspacing="0" class="gridtable">
@@ -282,24 +314,6 @@
 ?>
 </table>
 
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-	    $('#example').DataTable( {
-	        dom: 'Bfrtip',
-	        buttons: [
-	            {
-	                extend: 'copyHtml5',
-	                exportOptions: {
-	                 columns: ':contains("Office")'
-	                }
-	            },
-	            'excelHtml5',
-	            'csvHtml5',
-	            'pdfHtml5'
-	        ]
-	    } );
-	} );
-</script>
+
 </body>
 </html>
