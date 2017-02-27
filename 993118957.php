@@ -51,7 +51,7 @@
 	</script>
 </head>
 <body>
-<table id="example" border="0" cellpadding="0" cellspacing="0" class="gridtable">
+<table id="example" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
 	<th>Username</th>
