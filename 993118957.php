@@ -1,12 +1,4 @@
 <?php
-	
-	header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
-	header("Content-Disposition: attachment; filename=survey-report.xls");  //File name extension was wrong
-	header("Expires: 0");
-	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-	header("Cache-Control: private",false);
-
-
 	include("bd/bd.php");
 	$o_bd = new BD();
 	
@@ -15,33 +7,21 @@
 ?>
 <html>
 <head>
-<style type="text/css">
-table.gridtable {
-	font-family: verdana,arial,sans-serif;
-	font-size:11px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #666666;
-	border-collapse: collapse;
-}
-table.gridtable th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #dedede;
-}
-table.gridtable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: #ffffff;
-}
-</style>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" class="gridtable">
+<table id="example" border="0" cellpadding="0" cellspacing="0" class="gridtable">
 <tr>
 	<th>Username</th>
 	<th>Name</th>
@@ -301,5 +281,25 @@ table.gridtable td {
 	}
 ?>
 </table>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+	    $('#example').DataTable( {
+	        dom: 'Bfrtip',
+	        buttons: [
+	            {
+	                extend: 'copyHtml5',
+	                exportOptions: {
+	                 columns: ':contains("Office")'
+	                }
+	            },
+	            'excelHtml5',
+	            'csvHtml5',
+	            'pdfHtml5'
+	        ]
+	    } );
+	} );
+</script>
 </body>
 </html>
