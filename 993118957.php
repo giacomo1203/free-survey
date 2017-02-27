@@ -52,6 +52,7 @@
 </head>
 <body>
 <table id="example" border="0" cellpadding="0" cellspacing="0" class="gridtable">
+<thead>
 <tr>
 	<th>Username</th>
 	<th>Name</th>
@@ -114,6 +115,8 @@
 	<th>18g</th>
 	<th>18h</th>
 </tr>
+</thead>
+<tbody>
 <?php
 	if($num>0){
 		while($f=$o_bd->fetch_assoc($res)){
@@ -310,6 +313,7 @@
 		}
 	}
 ?>
+</tbody>
 </table>
 
 
