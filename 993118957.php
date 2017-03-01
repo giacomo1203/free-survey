@@ -2,14 +2,14 @@
 	include("bd/bd.php");
 	$o_bd = new BD();
 	
-	$res = $o_bd->consulta("select id, usu, est_enc, gru_enc, fname, lname from usuario where estado='1' order by fname, lname");
+	$res = $o_bd->consulta("select id, usu, est_enc, gru_enc, fname, lname from usuario where estado='1' and id>8 order by fname, lname");
 	$num = $o_bd->num_rows($res);
 ?>
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>DataTables example - HTML5 export buttons</title>
+	<title>Simple repo - links</title>
 	
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
