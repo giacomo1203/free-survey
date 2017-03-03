@@ -1,7 +1,7 @@
 <?php
 	
 	$tk = intval($_REQUEST['token']);
-	$codes = array(100, 101, 102, 103, 104, 105);
+	$codes = array(100, 101, 102, 103, 104, 105, 106);
 
 	function numhash($n) {
 	    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
