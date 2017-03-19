@@ -34,6 +34,7 @@
 	<script type="text/javascript" class="init">
 			$(document).ready(function() {
 				$('#example').DataTable( {
+					"pageLength": 50,
 					dom: 'Bfrtip',
 					buttons: [
 						{
