@@ -148,11 +148,11 @@
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
-							}
+							} else
 							if($pre==3 || $pre==4 || $pre==5 || $pre==9 || $pre==10 || $pre==11 || $pre==19 || $pre==20){
 								$existe = "1";
 								echo "<td>$valor</td>";
-							}
+							} else
 							if($pre==6){
 								$existe = "1";
 								$v = $valor;
@@ -165,7 +165,7 @@
 								}else{
 									echo "<td></td>";
 								}
-							}
+							} else
 							
 							if($pre==7){
 								$existe = "1";
@@ -185,14 +185,14 @@
 								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
-							}
+							} else
 							
 							if($pre==8){
 								$existe = "1";
 								$a_r = explode("|", $valor);
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
-							}
+							} else
 							if($pre==12){
 								$existe = "1";
 								$v = $valor;
@@ -203,7 +203,7 @@
 								}else{
 									echo "<td></td>";
 								}
-							}
+							} else
 							if($pre==13){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -218,7 +218,7 @@
 								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
-							}
+							} else
 							if($pre==14){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -233,7 +233,7 @@
 								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
-							}
+							} else
 							if($pre==15){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -248,7 +248,7 @@
 								}
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
-							}
+							} else
 							if($pre==16){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -266,7 +266,7 @@
 									echo "<td></td>";
 								}
 								echo "<td>".$a_r[1]."</td>";
-							}
+							} else
 							if($pre==17){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -280,7 +280,7 @@
 								if($a_r[8]==1){ echo "<td>Other</td>"; }else{ echo "<td></td>"; }
 								echo "<td>".$a_r[7]."</td>";
 								echo "<td>".$a_r[9]."</td>";
-							}
+							}else 
 							if($pre==18){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -290,7 +290,7 @@
 								if($a_r[3]==1){ echo "<td>Private laboratories/certification agencies</td>"; }else{ echo "<td></td>"; }
 								if($a_r[4]==1){ echo "<td>Other</td>"; }else{ echo "<td></td>"; }
 								echo "<td>".$a_r[5]."</td>";
-							}
+							}else
 							if($pre==21){
 								$existe = "1";
 								$a_r = explode("|", $valor);
@@ -302,6 +302,8 @@
 								if($a_r[5]==1){ echo "<td>Conferences</td>"; }else{ echo "<td></td>"; }
 								if($a_r[6]==1){ echo "<td>Other</td>"; }else{ echo "<td></td>"; }
 								echo "<td>".$a_r[7]."</td>";
+							}else{
+								echo "<td></td>"; 
 							}
 							
 							if($existe=="0"){ echo "<td></td>"; }
