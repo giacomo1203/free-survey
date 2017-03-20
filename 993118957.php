@@ -141,7 +141,7 @@
 						while($fr=$o_bd->fetch_assoc($res_r)){
 							$existe = "0";
 							$valor = str_replace("undefined", "", $fr["valor"]);
-							$blogs[] = $valor;
+							$arr[] = $valor;
 						}
 
 
@@ -151,18 +151,18 @@
 
 							if($pre==1 || $pre==2){ //|| $pre==7
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
 								echo "<td>".$a_r[2]."</td>";
 							}
 							if($pre==3 || $pre==4 || $pre==5 || $pre==9 || $pre==10 || $pre==11 || $pre==19 || $pre==20){
 								$existe = "1";
-								echo "<td>$valor</td>";
+								echo "<td>$arr[$x]</td>";
 							}
 							if($pre==6){
 								$existe = "1";
-								$v = $valor;
+								$v = $arr[$x];
 								if($v==1){ 
 									echo "<td>Private sector representatives should set the agenda, and should determine the outcomes of ANCTF sessions</td>";
 								}elseif($v==2){
@@ -176,7 +176,7 @@
 							
 							if($pre==7){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){ 
 									echo "<td>Department of Immigration and Border Protection</td>";
 								}elseif($a_r[0]==2){
@@ -196,13 +196,13 @@
 							
 							if($pre==8){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								echo "<td>".$a_r[0]."</td>";
 								echo "<td>".$a_r[1]."</td>";
 							}
 							if($pre==12){
 								$existe = "1";
-								$v = $valor;
+								$v = $arr[$x];
 								if($v==1){
 									echo "<td>Limit to Art. 23.2</td>";
 								}elseif($v==2){
@@ -213,7 +213,7 @@
 							}
 							if($pre==13){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){
 									echo "<td>Government</td>";
 								}elseif($a_r[0]==2){
@@ -228,7 +228,7 @@
 							}
 							if($pre==14){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){
 									echo "<td>Government</td>";
 								}elseif($a_r[0]==2){
@@ -243,7 +243,7 @@
 							}
 							if($pre==15){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){
 									echo "<td>Government office</td>";
 								}elseif($a_r[0]==2){
@@ -258,7 +258,7 @@
 							}
 							if($pre==16){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){
 									echo "<td>Once per year</td>";
 								}elseif($a_r[0]==2){
@@ -276,7 +276,7 @@
 							}
 							if($pre==17){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){ echo "<td>Office of Transport Security</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Department of Environment</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Department of Finance</td>"; }else{ echo "<td></td>"; }
@@ -290,7 +290,7 @@
 							}
 							if($pre==18){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){ echo "<td>Representatives of the insurance industry</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Representatives of the finance industry</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Port/airport operators</td>"; }else{ echo "<td></td>"; }
@@ -300,7 +300,7 @@
 							}
 							if($pre==21){
 								$existe = "1";
-								$a_r = explode("|", $valor);
+								$a_r = explode("|", $arr[$x]);
 								if($a_r[0]==1){ echo "<td>Permanent consultative committees</td>"; }else{ echo "<td></td>"; }
 								if($a_r[1]==1){ echo "<td>Centres of excellence or expertise</td>"; }else{ echo "<td></td>"; }
 								if($a_r[2]==1){ echo "<td>Network of subject-matter experts</td>"; }else{ echo "<td></td>"; }
