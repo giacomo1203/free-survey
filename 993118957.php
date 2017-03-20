@@ -134,7 +134,7 @@
 				<td><?php echo $f["usu"]; ?></td>
 				<td><?php echo $f["fname"]." ".$f["lname"]; ?></td>
 				<td><?php echo $f["gru_enc"]; ?></td>
-				<td><?php if($f["est_enc"] == '1'){ echo 'Incomplete'; }esle { echo 'Complete'; } ?></td>
+				<td><?php if($f["est_enc"] == '1'){ echo 'Incomplete'; }else { echo 'Complete'; } ?></td>
 				<?php
 					if($num_r>0){
 						$arr = array();
