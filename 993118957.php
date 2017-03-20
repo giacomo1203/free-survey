@@ -144,7 +144,7 @@
 
 							$pre++;
 
-							echo $pro.'<br>';
+							echo '----> '.$pre.'<br>';
 
 							if($pre==1 || $pre==2){ //|| $pre==7
 								$existe = "1";
