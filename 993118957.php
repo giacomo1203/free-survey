@@ -137,10 +137,17 @@
 				<td><?php echo $f["est_enc"]; ?></td>
 				<?php
 					if($num_r>0){
+						$arr = array();
 						while($fr=$o_bd->fetch_assoc($res_r)){
 							$existe = "0";
-							echo $valor = str_replace("undefined", "", $fr["valor"]).'---------- <br>';
+							$valor = str_replace("undefined", "", $fr["valor"]);
+							$blogs[] = $valor;
+						}
 
+
+						for($x = 0; $x <= 20; $x++){
+
+							echo "XD========>>>".$x;
 
 							$pre++;
 
