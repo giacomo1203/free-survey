@@ -137,11 +137,9 @@
 				<td><?php echo $f["est_enc"]; ?></td>
 				<?php
 					if($num_r>0){
-						//while(){
-						$fr=$o_bd->fetch_assoc($res_r)
-						for($i=0; $i<21; $i++){
+						while($fr=$o_bd->fetch_assoc($res_r)){
 							$existe = "0";
-							$valor = str_replace("undefined", "", $fr[$i]);
+							echo $valor = str_replace("undefined", "", $fr["valor"]).'---------- <br>';
 
 
 							$pre++;
